@@ -1,0 +1,16 @@
+export const EVENT_NAMES = {
+  JOIN_ROOM: "join_room",
+  SET_ID: "set_id",
+  KICK: "kick",
+  UNSYNC: "unsync",
+  INITIAL_DATA: "initial_data",
+  USER_READY: "user_ready",
+  USER_NOT_READY: "user_notReady",
+  USER_WAITING_FOR_DATA: "user_waitingForData",
+  USER_DISCONNECTED: "user_disconnected",
+  MEDIA_PAUSED: "media_paused",
+  MEDIA_PLAYED: "media_played",
+  MEDIA_SEEKED: "media_seeked",
+  CHAT_MSG_SUB: "chat_msgSubmitted",
+  GET_USER: "GET_USER",
+} as const;
