@@ -7,7 +7,7 @@ import expressServer from "./app";
 const PORT = process.env.PORT || 3000;
 
 expressServer.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
+  console.log(`server running on port http://localhost:${PORT}`);
 });
 
 // with database

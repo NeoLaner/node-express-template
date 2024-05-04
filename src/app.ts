@@ -5,10 +5,12 @@ import ExpressMongoSanitize from "express-mongo-sanitize";
 import { rateLimit } from "express-rate-limit";
 import helmet from "helmet";
 import bodyParser from "body-parser";
+import { v4 as uuidv4 } from "uuid";
 //eslint-disable-next-line
 //@ts-ignore
 import xss from "xss-clean";
 
+import { logHandle, loggerCtx } from "@libraries/logger";
 import AppError from "./utils/classes/appError";
 import globalErrorControl from "./libraries/error/errorControl";
 
@@ -45,7 +47,17 @@ app.use(
   })
 );
 
+//Add Middlewares
+app.use((req, res, next) => {
+  req.id = uuidv4();
+  next();
+});
+app.use(logHandle("incoming request"));
+app.use(loggerCtx);
+
+//Add Handlers
 app.get("/test", (req, res) => {
+  req.logger.info({ msg: "This is a log from test route" });
   res.json({
     status: "success",
     data: {
@@ -54,9 +66,6 @@ app.get("/test", (req, res) => {
   });
 });
 
-//Add Middlewares
-
-//Add Handlers
 app.all("*", (req, res, next) => {
   return next(new AppError(`Can't find  ${req.originalUrl}`, 404));
 });

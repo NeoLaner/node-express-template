@@ -16,7 +16,7 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "baseUrl": "./",
-    "paths": { "@/*": ["./src/*"] }
+    "paths": { "@/*": ["./src/*"], "@libraries/*": ["./src/libraries/*"] }
   },
   "include": [".eslintrc.json ", "src/**/*.ts", "copy-public.ts"],
 
