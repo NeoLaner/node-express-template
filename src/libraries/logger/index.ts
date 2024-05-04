@@ -2,7 +2,7 @@ import { pino } from "pino";
 import { config } from "@/config";
 import { ExpressMiddleware } from "@/utils/types";
 
-export const logger = pino({
+const logger = pino({
   level: config.LOG_LEVEL,
   transport: {
     targets: [
